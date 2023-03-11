@@ -2,7 +2,8 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Button, Input, Image } from "react-native-elements";                                                                                                 
 
-
+//loginscreen backend here
+//unfinished but QPS logo is shown on top of screen and a placeholder login
 const LoginScreen = () => {
   return (
     <View>
