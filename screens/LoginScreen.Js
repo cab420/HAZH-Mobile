@@ -1,26 +1,57 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
+import React, {useState} from 'react'
 import { Button, Input, Image } from "react-native-elements";                                                                                                 
 
 //loginscreen backend here
-//unfinished but QPS logo is shown on top of screen and a placeholder login
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
-    <View>
-      <Image source={require("../assets/qpslogo.png")} style={{width: 200, height:270}}/>
+    <KeyboardAvoidingView behavior="padding" style={styles.container}> 
+      <Image source={require("../assets/qpslogo.png")} style={styles.logo}/>
 
         <View style={styles.inputContainer}>
-            <Input placeholder="Email" autoFocus type="email"/>
-            <Input placeholder="Password" secureTextEntry type="password"/>
+            <Input 
+              placeholder="Email" 
+              type="email" 
+              value={email} 
+              onChangeText={(text) => setEmail(text)}
+              />
+            <Input 
+              placeholder="Password" 
+              secureTextEntry
+              ype="password" 
+              value={password} 
+              onChangeText={(text) => setPassword(text)}
+              />
         </View>
-    </View>
-  )
-}
+        <Button containerStyle={styles.Button} type="outline" title="Forgot Password?" />
+        <Button onPress={() => navigation.navigate("Authenticator")} containerStyle={styles.Button} title="Login" />
+        <View style={{ height: 100 }}/> 
+    </KeyboardAvoidingView>
+  );
+};
 
 export default LoginScreen;
 
+//style sheet for different things on login screen
 const styles = StyleSheet.create({
-    inputContainer:{
-
-    }
+    container: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      padding: 10,
+    },
+    inputContainer: {
+      width: 300,
+    },
+    button: {
+      width: 200,
+      marginTop: 10,
+    },
+    logo: {
+      width:200,
+      height: 250
+    },
 });
