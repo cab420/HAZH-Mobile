@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
 //https://youtu.be/AkEnidfZnCU?t=41594
 
 //asdasd
+// :)
 
 //test
 //stuff to install if you need to. but, the npm install command should just grab it all
