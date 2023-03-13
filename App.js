@@ -47,6 +47,9 @@ const styles = StyleSheet.create({
 //scan QR code with your phone to see the app on your phone
 //when it crashes, hold three fingers on the screen and click reload from the menu that pops up
 
+//test change
+
+
 //watch this vid ive linked the current time, he explains hwo to set up expo and how it works on iOS and android, basically all the stuff i just said above
 //https://youtu.be/VozPNrt-LfE?t=1567
 
