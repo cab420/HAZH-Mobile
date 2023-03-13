@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
 
 //asdasd
 // :)
+// hello
 
 //test
 //stuff to install if you need to. but, the npm install command should just grab it all
