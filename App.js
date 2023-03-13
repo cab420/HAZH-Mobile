@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
 //this other video is what im using to create the login and register functions and how they look
 //https://youtu.be/AkEnidfZnCU?t=41594
 
-
+//asdasd
 
 //test
 //stuff to install if you need to. but, the npm install command should just grab it all
