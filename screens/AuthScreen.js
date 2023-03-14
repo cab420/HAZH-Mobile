@@ -5,11 +5,11 @@ import { Button, Input, Image } from "react-native-elements";
 const AuthScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
-    <View>
+    <View style={styles.inputContainer}>
 
       <Text style = {styles.msg}>Please enter the code sent to the Microsoft Authenticator App</Text>
       <TextInput style={styles.input}></TextInput>
-      <Button onPress={() => navigation.navigate("Home")} containerStyle={styles.Button} title="Continue" />
+      <Button onPress={() => navigation.navigate("Home")} containerStyle={styles.button} title="Continue" />
 
     </View>
     </KeyboardAvoidingView>
@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
     width: 300,
   },
   button: {
-    width: 200,
-    marginBottom: 200,
+    width: 300,
+    marginTop: 30,
   },
   logo: {
     width:200,
