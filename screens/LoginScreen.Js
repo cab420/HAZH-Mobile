@@ -9,7 +9,7 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}> 
-      <Image source={require("../assets/qpslogo.png")} style={styles.logo}/>
+      <Image source={require("../assets/badge.png")} style={styles.logo}/>
 
         <View style={styles.inputContainer}>
             <Input 
@@ -35,13 +35,14 @@ const LoginScreen = ({ navigation }) => {
 
 export default LoginScreen;
 
-//style sheet for different things on login screen
+//style sheet for everything on the login screen
 const styles = StyleSheet.create({
     container: {
       flex: 1,
       alignItems: "center",
       justifyContent: "center",
       padding: 10,
+      backgroundColor: '#FFFFFF' //this is the background color of the login page!
     },
     inputContainer: {
       width: 300,
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
     },
     logo: {
       width:200,
-      height: 250
+      height: 270,
+      marginBottom: 80
     },
 });

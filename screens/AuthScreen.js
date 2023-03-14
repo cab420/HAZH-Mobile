@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput } from 'react-native'
 import React, {useState} from 'react'
 import { Button, Input, Image } from "react-native-elements";       
 
@@ -6,8 +6,11 @@ const AuthScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
     <View>
-      <Text>2FAScreen - placeholder</Text>
+
+      <Text style = {styles.msg}>Please enter the code sent to the Microsoft Authenticator App</Text>
+      <TextInput style={styles.input}></TextInput>
       <Button onPress={() => navigation.navigate("Home")} containerStyle={styles.Button} title="Continue" />
+
     </View>
     </KeyboardAvoidingView>
   )
@@ -33,5 +36,17 @@ const styles = StyleSheet.create({
   logo: {
     width:200,
     height: 250
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
+  msg: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+    height: 100,
   },
 });
