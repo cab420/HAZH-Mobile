@@ -26,8 +26,8 @@ const LoginScreen = ({ navigation }) => {
               onChangeText={(text) => setPassword(text)}
               />
         </View>
-        <Button containerStyle={styles.Button} type="outline" title="Forgot Password?" />
-        <Button onPress={() => navigation.navigate("Authenticator")} containerStyle={styles.Button} title="Login" />
+        <Button containerStyle={styles.button1} type="outline" title="Forgot Password?" />
+        <Button onPress={() => navigation.navigate("Authenticator")} containerStyle={styles.button2} title="Login" />
         <View style={{ height: 100 }}/> 
     </KeyboardAvoidingView>
   );
@@ -47,9 +47,13 @@ const styles = StyleSheet.create({
     inputContainer: {
       width: 300,
     },
-    button: {
+    button1: {
       width: 200,
       marginTop: 10,
+    },
+    button2: {
+      width: 100,
+      marginTop: 30,
     },
     logo: {
       width:200,
