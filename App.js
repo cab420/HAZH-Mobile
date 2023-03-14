@@ -4,9 +4,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import LoginScreen from "./screens/LoginScreen";
-import AuthScreen from "./screens/AuthScreen";
-import HomeScreen from "./screens/HomeScreen";
+import LoginScreen from "./screens/LoginScreen.js";
+import AuthScreen from "./screens/AuthScreen.js";
+import HomeScreen from "./screens/HomeScreen.js";
 
 //this stack holds all the screens you swipe through on the app
 const Stack = createNativeStackNavigator();
