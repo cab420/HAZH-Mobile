@@ -1,6 +1,7 @@
 import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
 import React, {useState} from 'react'
 import { Button, Input, Image } from "react-native-elements";                                                                                                 
+import { StatusBar } from 'expo-status-bar';
 
 //loginscreen backend here
 const LoginScreen = ({ navigation }) => {
@@ -10,6 +11,10 @@ const LoginScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}> 
       <Image source={require("../assets/badge.png")} style={styles.logo}/>
+
+      <View>
+        <StatusBar style='light'/>      
+      </View>
 
         <View style={styles.inputContainer}>
             <Input 
@@ -51,13 +56,15 @@ const styles = StyleSheet.create({
     button1: {
       width: 200,
       marginTop: 10,
-      
+
     },
+
     button2: {
       width: 100,
       marginTop: 30,
       backgroundColor: '#002148'
     },
+    
     logo: {
       width:200,
       height: 270,
