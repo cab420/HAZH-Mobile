@@ -1,33 +1,43 @@
 import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
-import React, {useState} from 'react'
-import { Button, Input, Image } from "react-native-elements";                                                                                                 
+import React, {useContext, useState} from 'react'
+import { Button, Input, Image } from "react-native-elements";
+import { AuthContext } from '../context/AuthContext';
+
+
 
 //loginscreen backend here
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const {isLoading, login} = useContext(AuthContext);
+  
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}> 
       <Image source={require("../assets/badge.png")} style={styles.logo}/>
 
         <View style={styles.inputContainer}>
             <Input 
-              placeholder="Email" 
+              placeholder="Enter Email" 
               type="email" 
               value={email} 
               onChangeText={(text) => setEmail(text)}
               />
             <Input 
-              placeholder="Password" 
+              placeholder="Enter Password" 
               secureTextEntry
-              ype="password" 
+              type="password" 
               value={password} 
               onChangeText={(text) => setPassword(text)}
               />
         </View>
         <Button containerStyle={styles.button1} type="outline" title="Forgot Password?" />
-        <Button onPress={() => navigation.navigate("Authenticator")} containerStyle={styles.button2} title="Login" />
+        <Button title="Login"
+            onPress={() => {
+            login(email, password);
+        }}
+        containerStyle={styles.button2}
+        />
+        
         <View style={{ height: 100 }}/> 
     </KeyboardAvoidingView>
   );
