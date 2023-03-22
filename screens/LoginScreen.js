@@ -14,11 +14,6 @@ const LoginScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}> 
       <Image source={require("../assets/badge.png")} style={styles.logo}/>
-
-      <View>
-        <StatusBar style='light'/>      
-      </View>
-
         <View style={styles.inputContainer}>
             <Input 
               placeholder="Enter Email" 
