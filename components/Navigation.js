@@ -1,6 +1,7 @@
 import LoginScreen from "../screens/LoginScreen";
 import AuthScreen from "../screens/AuthScreen";
 import HomeScreen from "../screens/HomeScreen";
+import SplashScreen from "../screens/SplashScreen";
 
 import React, {useContext} from "react";
 import { AuthContextProvider, AuthContext } from "../context/AuthContext";
@@ -21,12 +22,26 @@ const globalScreenOptions = {
 
 
 const Navigation = () => {
+    const { userInfo, splashLoading } = useContext(AuthContext);
 return (
       <NavigationContainer>
-        <Stack.Navigator screenOptions={globalScreenOptions}>        
-          <Stack.Screen name="Login" component = {LoginScreen} />
-          <Stack.Screen name="Authenticator" component = {AuthScreen} />
-          <Stack.Screen name="Home" component = {HomeScreen} />
+        <Stack.Navigator screenOptions={globalScreenOptions}>
+            {userInfo.access_token ? (
+            <Stack.Screen name="Home" component={HomeScreen} />
+            ) : (
+            <>
+                <Stack.Screen
+                name="Login"
+                component={LoginScreen}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="Authenticator"
+                component={AuthScreen}
+                options={{headerShown: false}}
+                />
+            </>
+            )}          
         </Stack.Navigator>
       </NavigationContainer>    
   );
@@ -42,3 +57,9 @@ const styles = StyleSheet.create({
 });
 
 export default Navigation;
+
+
+
+//<Stack.Screen name="Login" component = {LoginScreen} />
+//<Stack.Screen name="Authenticator" component = {AuthScreen} />
+//<Stack.Screen name="Home" component = {HomeScreen} />

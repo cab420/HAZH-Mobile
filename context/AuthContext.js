@@ -5,8 +5,6 @@ import { BASE_URL } from '../config/config';
 
 export const AuthContext = createContext();
 
-
-
 export const AuthContextProvider = ({children}) => {
     const [userInfo, setUserInfo] = useState({});
     const [isLoading, setIsLoading] = useState(false);
