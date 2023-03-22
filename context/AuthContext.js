@@ -76,7 +76,7 @@ export const AuthContextProvider = ({children}) => {
     
     useEffect(() => {
         isLoggedIn();
-    }, [userInfo]); // [] is used here to ensure single render
+    }, []); // [] is used here to ensure single render
     
 
     /*//new attempt based on desktop app

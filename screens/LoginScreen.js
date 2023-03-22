@@ -1,5 +1,5 @@
 import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
-import React, {useContext, useState} from 'react'
+import React, { useContext, useState } from 'react'
 import { Button, Input, Image } from "react-native-elements";
 import { AuthContext } from '../context/AuthContext';
 
