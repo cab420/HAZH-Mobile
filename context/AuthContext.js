@@ -1,10 +1,11 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {createContext, useEffect, useState} from 'react';
+import { BASE_URL } from '../config/config';
 
 export const AuthContext = createContext();
 
-const BASE_URL = "192.168.1.101:3002";
+
 
 export const AuthContextProvider = ({children}) => {
     const [userInfo, setUserInfo] = useState({});
@@ -16,7 +17,7 @@ export const AuthContextProvider = ({children}) => {
         setIsLoading(true);
         
         axios
-            .post('http://192.168.1.101:3002/api/auth/login', {
+            .post(`${BASE_URL}/api/auth/login`, {
                 email,
                 password,
                 withCredentials: true,
