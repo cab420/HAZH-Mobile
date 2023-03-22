@@ -16,9 +16,10 @@ export const AuthContextProvider = ({children}) => {
         setIsLoading(true);
         
         axios
-            .post(`${BASE_URL}/api/auth/login`, {
+            .post('http://192.168.1.101:3002/api/auth/login', {
                 email,
                 password,
+                withCredentials: true,
             })
             .then(res => {
                 let userInfo = res.data;
