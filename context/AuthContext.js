@@ -1,14 +1,12 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-//import {BASE_URL} from '../App';
 import React, {createContext, useEffect, useState} from 'react';
 
-
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 
 const BASE_URL = "192.168.1.101:3002";
 
-export const AuthProvider = ({children}) => {
+export const AuthContextProvider = ({children}) => {
     const [userInfo, setUserInfo] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [splashLoading, setSplashLoading] = useState(false);
@@ -34,7 +32,7 @@ export const AuthProvider = ({children}) => {
     };
 
     const logout = () => {
-
+            
         setIsLoading(true);
 
         axios
@@ -56,8 +54,10 @@ export const AuthProvider = ({children}) => {
                 setIsLoading(false);
             });
     };
+     //fucked out rn
 
     const isLoggedIn = async () => {
+        
         try {
             setSplashLoading(true);
 
@@ -73,10 +73,17 @@ export const AuthProvider = ({children}) => {
             console.log(`logged in error ${e}`);
         }
     };
-
+    
     useEffect(() => {
         isLoggedIn();
-    }, []); // [] is used here to ensure single render
+    }, [userInfo]); // [] is used here to ensure single render
+    
+
+    /*//new attempt based on desktop app
+    useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(userInfo));
+    }, [userInfo]);
+    */
 
     return (
         <AuthContext.Provider
@@ -86,7 +93,7 @@ export const AuthProvider = ({children}) => {
                 splashLoading,
                 login,
                 logout
-            }}>{children}
+            }}> {children}
         </AuthContext.Provider>
     );
 };

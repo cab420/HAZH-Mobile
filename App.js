@@ -1,48 +1,17 @@
-import "react-native-gesture-handler";
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import React, { useContext } from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import LoginScreen from "./screens/LoginScreen";
-import AuthScreen from "./screens/AuthScreen";
-import HomeScreen from "./screens/HomeScreen";
-import { AuthContext } from "./context/AuthContext";
+import React from 'react';
+import { StatusBar, Text, View } from 'react-native';
+import Navigation from './components/Navigation';
+import { AuthContextProvider } from './context/AuthContext';
 
-//this stack holds all the screens you swipe through on the app
-const Stack = createNativeStackNavigator();
-
-const BASE_URL = "192.168.1.101:3002";
-
-const globalScreenOptions = {
-  headerStyle: {backgroundColor: "#2C6BED"},
-  headerTitleStyle: {color: "white"},
-  headerTintColor: "white",
-}
-
-export default function App() {
-  const {userInfo, splashLoading} = useContext(AuthContext);
+const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={globalScreenOptions}>
-        
-      <Stack.Screen name="Login" component = {LoginScreen} />
-      <Stack.Screen name="Authenticator" component = {AuthScreen} />
-      <Stack.Screen name="Home" component = {HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthContextProvider>      
+      <Navigation />
+    </AuthContextProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#3BC6D7',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
+export default App;
 //when you clone this, open a terminal and make sure your in this folder example C:\User\GitHub\HAZH-Mobile"
 //then type: npm install
 //this will download all the packages and libraries for this
