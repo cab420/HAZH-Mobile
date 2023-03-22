@@ -93,7 +93,7 @@ export const AuthContextProvider = ({children}) => {
                 splashLoading,
                 login,
                 logout
-            }}> {children}
+            }}>{children}
         </AuthContext.Provider>
     );
 };
