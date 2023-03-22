@@ -3,6 +3,7 @@ import { StatusBar, Text, View } from 'react-native';
 import Navigation from './components/Navigation';
 import { AuthContextProvider } from './context/AuthContext';
 
+
 const App = () => {
   return (
     <AuthContextProvider>      
@@ -12,6 +13,7 @@ const App = () => {
 };
 
 export default App;
+
 //when you clone this, open a terminal and make sure your in this folder example C:\User\GitHub\HAZH-Mobile"
 //then type: npm install
 //this will download all the packages and libraries for this

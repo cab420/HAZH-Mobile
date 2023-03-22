@@ -1,8 +1,8 @@
 import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
+
 import React, { useContext, useState } from 'react'
 import { Button, Input, Image } from "react-native-elements";
 import { AuthContext } from '../context/AuthContext';
-
 
 
 //loginscreen backend here
@@ -14,6 +14,10 @@ const LoginScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}> 
       <Image source={require("../assets/badge.png")} style={styles.logo}/>
+
+      <View>
+        <StatusBar style='light'/>      
+      </View>
 
         <View style={styles.inputContainer}>
             <Input 
@@ -31,13 +35,14 @@ const LoginScreen = ({ navigation }) => {
               />
         </View>
         <Button containerStyle={styles.button1} type="outline" title="Forgot Password?" />
+
         <Button title="Login"
             onPress={() => {
             login(email, password);
         }}
         containerStyle={styles.button2}
-        />
-        
+        />        
+
         <View style={{ height: 100 }}/> 
     </KeyboardAvoidingView>
   );
@@ -56,18 +61,26 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
       width: 300,
+
     },
     button1: {
       width: 200,
       marginTop: 10,
+
     },
+
     button2: {
       width: 100,
       marginTop: 30,
+      backgroundColor: '#002148'
     },
+    
     logo: {
       width:200,
       height: 270,
-      marginBottom: 80
+      marginBottom: 60
+
     },
 });
+
+//blue colour for the main backgrounds #002148
