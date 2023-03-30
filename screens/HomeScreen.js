@@ -4,7 +4,7 @@ import { Button, Input, Image } from "react-native-elements";
 import { AuthContext } from '../context/AuthContext';
 
 const HomeScreen = ({ navigation }) => {
-    const {isLoading, logout} = useContext(AuthContext);
+    const {isLoading, logout, userInfo} = useContext(AuthContext);
     
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>

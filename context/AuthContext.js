@@ -26,8 +26,8 @@ export const AuthContextProvider = ({children}) => {
                 setUserInfo(userInfo);
                 AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
                 setIsLoading(false);
-                console.log(res);
-                console.log(`${userInfo.accessToken}`);
+                //console.log(res);
+                //console.log(`${userInfo.accessToken}`);
             }).catch(e => {// error handling to be changed here
                 console.log(`login error ${e}`);
                 setIsLoading(false);
@@ -57,10 +57,21 @@ export const AuthContextProvider = ({children}) => {
                 setIsLoading(false);
             });
     };
-     //fucked out rn
-
+    
     const isLoggedIn = async () => {
         
+        axios
+        .post(`${BASE_URL}/api/auth/isLoggedIn`,
+                {},
+                {
+                    headers: {Authorization: `Bearer ${userInfo.accessToken}`},
+                },
+        ).catch(function (error) {
+            //console.log(error)
+            logout();
+        })
+        
+        //.then(console.log('happened'))
         try {
             setSplashLoading(true);
 
@@ -79,7 +90,7 @@ export const AuthContextProvider = ({children}) => {
     
     useEffect(() => {
         isLoggedIn();
-    }, [userInfo]); // [] is used here to ensure single render
+    }, []); // [] is used here to ensure single render
       
 
     return (
