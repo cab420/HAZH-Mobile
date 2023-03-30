@@ -26,8 +26,8 @@ export const AuthContextProvider = ({children}) => {
                 setUserInfo(userInfo);
                 AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
                 setIsLoading(false);
-                console.log(res);
-                //console.log(`${userInfo.accessToken}`);
+                //console.log(res);
+                console.log(userInfo.accessToken);
             }).catch(e => {// error handling to be changed here
                 console.log(`login error ${e}`);
                 setIsLoading(false);
@@ -43,7 +43,7 @@ export const AuthContextProvider = ({children}) => {
                 `${BASE_URL}/api/auth/logout`,
                 {},
                 {
-                    headers: {Authorization: `Bearer ${userInfo.accessToken}`},
+                    headers: {authorization: `Bearer ${userInfo.accessToken}`},
                 },
             )
             .then(res => {
@@ -59,17 +59,23 @@ export const AuthContextProvider = ({children}) => {
     };
     
     const isLoggedIn = async () => {
+        try {
+                let userInfo = await AsyncStorage.getItem('userInfo');
+                userInfo = JSON.parse(userInfo);
+                axios
+                .post(`${BASE_URL}/api/auth/isLoggedIn`,
+                        {},
+                        {
+                            headers: {authorization: `Bearer ${userInfo.accessToken}`},
+                        },
+                ).catch(function (error) {
+                    console.log(error)
+                    logout();
+                })
+            } catch (e) {
+            console.log(e);
+        };
         
-        axios
-        .post(`${BASE_URL}/api/auth/isLoggedIn`,
-                {},
-                {
-                    headers: {Authorization: `Bearer ${userInfo.accessToken}`},
-                },
-        ).catch(function (error) {
-            console.log(error)
-            logout();
-        })
         
         //.then(console.log('happened'))
         try {
