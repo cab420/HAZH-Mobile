@@ -26,7 +26,7 @@ export const AuthContextProvider = ({children}) => {
                 setUserInfo(userInfo);
                 AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
                 setIsLoading(false);
-                //console.log(res);
+                console.log(res);
                 //console.log(`${userInfo.accessToken}`);
             }).catch(e => {// error handling to be changed here
                 console.log(`login error ${e}`);
@@ -47,7 +47,7 @@ export const AuthContextProvider = ({children}) => {
                 },
             )
             .then(res => {
-                console.log(res);
+                //console.log(res);
                 AsyncStorage.removeItem('userInfo');
                 setUserInfo({});
                 setIsLoading(false);
@@ -67,7 +67,7 @@ export const AuthContextProvider = ({children}) => {
                     headers: {Authorization: `Bearer ${userInfo.accessToken}`},
                 },
         ).catch(function (error) {
-            //console.log(error)
+            console.log(error)
             logout();
         })
         
