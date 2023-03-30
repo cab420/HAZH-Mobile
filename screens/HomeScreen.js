@@ -1,14 +1,22 @@
 import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Button, Input, Image } from "react-native-elements";    
+import { AuthContext } from '../context/AuthContext';
 
 const HomeScreen = ({ navigation }) => {
+    const {isLoading, logout} = useContext(AuthContext);
+    
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
-      <View>
-        <Text>Home screen placeholder - functions here = share to desktop, screen records history, user</Text>
-        <Button containerStyle={styles.Button} title="Continue" />
-      </View>
+        <View>
+          <Text>Home screen placeholder - functions here = share to desktop, screen records history, user</Text>
+          <Button 
+            onPress={() => {
+              logout();
+            }}
+            containerStyle={styles.Button} title="Logout" 
+          />
+        </View>
       </KeyboardAvoidingView>
     )
   }

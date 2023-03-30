@@ -22,10 +22,12 @@ export const AuthContextProvider = ({children}) => {
                 withCredentials: true,
             })
             .then(res => {
-                setUserInfo(res.data);
+                let userInfo = res.data;
+                setUserInfo(userInfo);
                 AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
                 setIsLoading(false);
-                console.log(res.headers);                
+                console.log(res);
+                console.log(`${userInfo.accessToken}`);
             }).catch(e => {// error handling to be changed here
                 console.log(`login error ${e}`);
                 setIsLoading(false);
