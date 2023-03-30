@@ -2,6 +2,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {createContext, useEffect, useState} from 'react';
 import { BASE_URL } from '../config/config';
+//import Cookie from 'react-native-cookie'
 
 export const AuthContext = createContext();
 
@@ -21,10 +22,10 @@ export const AuthContextProvider = ({children}) => {
                 withCredentials: true,
             })
             .then(res => {
-                let userInfo = res.data;
-                setUserInfo(userInfo);
+                setUserInfo(res.data);
                 AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
                 setIsLoading(false);
+                console.log(res.headers);                
             }).catch(e => {// error handling to be changed here
                 console.log(`login error ${e}`);
                 setIsLoading(false);
@@ -40,11 +41,11 @@ export const AuthContextProvider = ({children}) => {
                 `${BASE_URL}/api/auth/logout`,
                 {},
                 {
-                    headers: {Authorization: `Bearer ${userInfo.access_token}`},
+                    headers: {Authorization: `Bearer ${userInfo.accessToken}`},
                 },
             )
             .then(res => {
-                console.log(res.data);
+                console.log(res);
                 AsyncStorage.removeItem('userInfo');
                 setUserInfo({});
                 setIsLoading(false);
@@ -76,14 +77,8 @@ export const AuthContextProvider = ({children}) => {
     
     useEffect(() => {
         isLoggedIn();
-    }, []); // [] is used here to ensure single render
-    
-
-    /*//new attempt based on desktop app
-    useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(userInfo));
-    }, [userInfo]);
-    */
+    }, [userInfo]); // [] is used here to ensure single render
+      
 
     return (
         <AuthContext.Provider

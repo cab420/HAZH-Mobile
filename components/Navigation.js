@@ -26,7 +26,7 @@ const Navigation = () => {
 return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={globalScreenOptions}>
-            {userInfo.access_token ? (
+            {userInfo.accessToken ? (
             <Stack.Screen name="Home" component={HomeScreen} />
             ) : (
             <>
