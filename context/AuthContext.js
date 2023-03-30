@@ -27,7 +27,7 @@ export const AuthContextProvider = ({children}) => {
                 AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
                 setIsLoading(false);
                 //console.log(res);
-                console.log(userInfo.accessToken);
+                //console.log(userInfo.accessToken);
             }).catch(e => {// error handling to be changed here
                 console.log(`login error ${e}`);
                 setIsLoading(false);

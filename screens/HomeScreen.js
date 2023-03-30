@@ -2,6 +2,7 @@ import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
 import React, {useState, useContext} from 'react'
 import { Button, Input, Image } from "react-native-elements";    
 import { AuthContext } from '../context/AuthContext';
+import { startRecording } from '../components/ScreenShare';
 
 const HomeScreen = ({ navigation }) => {
     const {isLoading, logout, userInfo} = useContext(AuthContext);
@@ -9,13 +10,31 @@ const HomeScreen = ({ navigation }) => {
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <View>
-          <Text>Home screen placeholder - functions here = share to desktop, screen records history, user</Text>
+          <Text>Welcome {userInfo.name}</Text>
+          <Text></Text>
+          <Text></Text>
+          <Button 
+            onPress={() => { 
+              startRecording();             
+            }}
+            containerStyle={styles.Button} title="Share to Desktop" 
+          />
+          <Text></Text>
+          <Button 
+            onPress={() => {
+              
+            }}
+            containerStyle={styles.Button} title="Screen Records History" 
+          />
+          <Text></Text>
           <Button 
             onPress={() => {
               logout();
             }}
             containerStyle={styles.Button} title="Logout" 
           />
+          
+          
         </View>
       </KeyboardAvoidingView>
     )
