@@ -29,10 +29,10 @@ return (
   <NavigationContainer>
   <Stack.Navigator screenOptions={globalScreenOptions}>
       {userInfo.accessToken ? (
-      <Stack.Navigator screenOptions={globalScreenOptions}>
+      <>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="RecordHistory" component={RecordHistoryScreen} />
-      </Stack.Navigator>
+      </>
       ) : (
       <>
           {userInfo.email ? (
