@@ -26,10 +26,9 @@ const Navigation = () => {
 return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={globalScreenOptions}>
-            {userInfo.accessToken ? (
-            <Stack.Screen name="Home" component={HomeScreen} />
-            ) : (
+            
             <>
+                <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen
                 name="Login"
                 component={LoginScreen}
@@ -41,7 +40,7 @@ return (
                 options={{headerShown: false}}
                 />
             </>
-            )}          
+                      
         </Stack.Navigator>
       </NavigationContainer>    
   );

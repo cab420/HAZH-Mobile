@@ -29,7 +29,8 @@ const HomeScreen = ({ navigation }) => {
           <Text></Text>
           <Button 
             onPress={() => {
-              logout();
+              //logout();
+              navigation.navigate("Login")
             }}
             containerStyle={styles.Button} title="Logout" 
           />

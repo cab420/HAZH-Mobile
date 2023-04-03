@@ -33,7 +33,8 @@ const LoginScreen = ({ navigation }) => {
 
         <Button title="Login"
             onPress={() => {
-            login(email, password);
+            //login(email, password);
+            navigation.navigate("Authenticator");
         }}
         containerStyle={styles.button2}
         />        
