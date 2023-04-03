@@ -22,7 +22,7 @@ const HomeScreen = ({ navigation }) => {
           <Text></Text>
           <Button 
             onPress={() => {
-              
+              navigation.navigate("RecordHistory")
             }}
             containerStyle={styles.Button} title="Screen Records History" 
           />
