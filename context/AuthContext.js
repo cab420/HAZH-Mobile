@@ -12,28 +12,27 @@ export const AuthContextProvider = ({children}) => {
     const [splashLoading, setSplashLoading] = useState(false);
     const [err, setErr] = useState(null);
     
-    const login = (email, password) => {
+    const login = async (email, password) => {
         
         setIsLoading(true);
+        setErr("")
         
-        axios
+        await axios
             .post(`${BASE_URL}/api/auth/login`, {
                 email,
                 password,
                 withCredentials: true,
             })
-            .then(res => {
+            .then(res => {                
                 let userInfo = res.data;
-                setErr(null);
+                //setErr(null);
                 setUserInfo(userInfo);
                 AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
-                setIsLoading(false);
-                //console.log(res);
-                //console.log(userInfo.accessToken);
+                setErr(null);
+                setIsLoading(false);                
             }).catch(e => {// error handling to be changed here
-                console.log(`login error ${e}`);
-                console.log(e)
                 setErr(`login error ${e}`);
+                console.log(`login error ${e}`);                               
                 setIsLoading(false);
         });  
     };

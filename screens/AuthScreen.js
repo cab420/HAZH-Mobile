@@ -19,8 +19,10 @@ const AuthScreen = ({ navigation }) => {
       <Text>{err}</Text>
       <Button onPress={() => {
               mfaVerify(token);
-              if(err === null) {
-                navigation.navigate("Authenticator")
+              if (!isLoading) {
+                if(err === null) {
+                  navigation.navigate("Authenticator")
+                }
               }
             }}
             containerStyle={styles.button} title="Continue" />

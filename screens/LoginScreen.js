@@ -11,6 +11,16 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState(null);
   const {isLoading, login, err} = useContext(AuthContext);  
 
+
+  const handleLogin = async () => {
+    //e.preventDefault();
+    try {
+      await login(email, password);
+      //await navigation.navigate("Authenticator");
+    } catch (err) {
+      setErr(err.response.data.message);
+    }
+  };
   
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}> 
@@ -35,11 +45,9 @@ const LoginScreen = ({ navigation }) => {
 
         <Button title="Login"
             onPress={() => {
-              login(email, password);
-              if(err === null) {
-                navigation.navigate("Authenticator")
-              }
-        }}
+              handleLogin();
+        }
+      }
         containerStyle={styles.button2}
         />        
 

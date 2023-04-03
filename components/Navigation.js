@@ -30,17 +30,22 @@ return (
             <Stack.Screen name="Home" component={HomeScreen} />
             ) : (
             <>
-                <Stack.Screen
-                name="Login"
-                component={LoginScreen}
-                options={{headerShown: false}}
-                />
-                <Stack.Screen
-                name="Authenticator"
-                component={AuthScreen}
-                options={{headerShown: false}}
-                />
-            </>
+                {userInfo.email ? (
+                  <Stack.Screen
+                  name="Authenticator"
+                  component={AuthScreen}
+                  options={{headerShown: false}}
+                  />
+                
+                ) : (
+                  <Stack.Screen
+                  name="Login"
+                  component={LoginScreen}
+                  options={{headerShown: false}}
+                  />
+            
+                )}
+              </>
             )}          
         </Stack.Navigator>
       </NavigationContainer>    
