@@ -15,7 +15,7 @@ const AuthScreen = ({ navigation }) => {
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <ImageBackground source={localImage} style={styles.image}>
 
-      <Text style = {styles.msg}>Please enter the code sent to the Microsoft Authenticator App</Text>
+      <Text style = {styles.msg}>Please enter the code sent to the Authenticator App</Text>
       <TextInput style={styles.input}
         value={token}
         onChangeText={(text) => setToken(text)}
