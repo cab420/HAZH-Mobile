@@ -29,7 +29,10 @@ return (
         <Stack.Navigator screenOptions={globalScreenOptions}>
             
             <>
-                <Stack.Screen name="Home" component={HomeScreen} />
+                <Stack.Screen name="Home" 
+                component={HomeScreen} 
+                options={{headerShown: false}}
+                />
                 <Stack.Screen
                 name="Login"
                 component={LoginScreen}
