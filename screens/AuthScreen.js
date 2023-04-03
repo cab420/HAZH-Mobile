@@ -1,19 +1,35 @@
 import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput } from 'react-native'
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Button, Input, Image } from "react-native-elements";   
 import {ImageBackground} from 'react-native'; // for background image    
+import { AuthContext } from '../context/AuthContext';
 
 const AuthScreen = ({ navigation }) => {
   
   const localImage = require('../assets/greyscaleQPSlogo.png'); // for background image
 
+  const {isLoading, mfaVerify, err} = useContext(AuthContext);  
+  const [token, setToken] = useState(null);
+  
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <ImageBackground source={localImage} style={styles.image}>
 
-        <Text style = {styles.msg}>Please enter the code sent to the Microsoft Authenticator App</Text>
-        <TextInput style={styles.input}></TextInput>
-        <Button onPress={() => navigation.navigate("Home")} containerStyle={styles.button} title="Continue" />
+      <Text style = {styles.msg}>Please enter the code sent to the Microsoft Authenticator App</Text>
+      <TextInput style={styles.input}
+        value={token}
+        onChangeText={(text) => setToken(text)}
+      ></TextInput>
+      <Text>{err}</Text>
+      <Button onPress={() => {
+              mfaVerify(token);
+              if (!isLoading) {
+                if(err === null) {
+                  navigation.navigate("Authenticator")
+                }
+              }
+            }}
+            containerStyle={styles.button} title="Continue" />
 
       </ImageBackground>
     </KeyboardAvoidingView>

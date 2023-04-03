@@ -26,35 +26,38 @@ const globalScreenOptions = {
 const Navigation = () => {
     const { userInfo, splashLoading } = useContext(AuthContext);
 return (
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={globalScreenOptions}>
-            
-            <>
-                <Stack.Screen name="Home" 
-                component={HomeScreen} 
-                
-                />
-                <Stack.Screen
-                name="Login"
-                component={LoginScreen}
-                options={{headerShown: false}}
-                />
-                <Stack.Screen
-                name="Authenticator"
-                component={AuthScreen}
-                
-                />
-                <Stack.Screen
-                name="RecordHistory"
-                component={RecordHistoryScreen}
-                
-                />
-            </>
-                      
-        </Stack.Navigator>
-      </NavigationContainer>    
-  );
-};
+  <NavigationContainer>
+  <Stack.Navigator screenOptions={globalScreenOptions}>
+      {userInfo.accessToken ? (
+      <Stack.Navigator screenOptions={globalScreenOptions}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="RecordHistory" component={RecordHistoryScreen} />
+      </Stack.Navigator>
+      ) : (
+      <>
+          {userInfo.email ? (
+            <Stack.Screen
+            name="Authenticator"
+            component={AuthScreen}
+            options={{headerShown: false}}
+            />
+          
+          ) : (
+            <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{headerShown: false}}
+            />
+      
+          )}
+        </>
+      )}          
+  </Stack.Navigator>
+</NavigationContainer>    
+);
+};            
+               
+
 
 const styles = StyleSheet.create({
   container: {
