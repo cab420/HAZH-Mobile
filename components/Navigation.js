@@ -21,6 +21,7 @@ const globalScreenOptions = {
   headerTintColor: "white",
 }
 
+// options={{headerShown: false}} // from under component of each screen
 
 const Navigation = () => {
     const { userInfo, splashLoading } = useContext(AuthContext);
@@ -31,7 +32,7 @@ return (
             <>
                 <Stack.Screen name="Home" 
                 component={HomeScreen} 
-                options={{headerShown: false}}
+                
                 />
                 <Stack.Screen
                 name="Login"
@@ -41,12 +42,12 @@ return (
                 <Stack.Screen
                 name="Authenticator"
                 component={AuthScreen}
-                options={{headerShown: false}}
+                
                 />
                 <Stack.Screen
                 name="RecordHistory"
                 component={RecordHistoryScreen}
-                options={{headerShown: false}}
+                
                 />
             </>
                       
