@@ -2,6 +2,7 @@ import LoginScreen from "../screens/LoginScreen";
 import AuthScreen from "../screens/AuthScreen";
 import HomeScreen from "../screens/HomeScreen";
 import SplashScreen from "../screens/SplashScreen";
+import RecordHistoryScreen from "../screens/RecordHistory";
 
 import React, {useContext} from "react";
 import { AuthContextProvider, AuthContext } from "../context/AuthContext";
@@ -37,6 +38,11 @@ return (
                 <Stack.Screen
                 name="Authenticator"
                 component={AuthScreen}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="RecordHistory"
+                component={RecordHistoryScreen}
                 options={{headerShown: false}}
                 />
             </>

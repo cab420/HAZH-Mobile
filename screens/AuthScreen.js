@@ -1,6 +1,7 @@
 import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput } from 'react-native'
 import React, {useState} from 'react'
-import { Button, Input, Image } from "react-native-elements";       
+import { Button, Input, Image } from "react-native-elements";   
+import {ImageBackground} from 'react-native'; // for background image    
 
 const AuthScreen = ({ navigation }) => {
   return (
@@ -49,4 +50,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     height: 100,
   },
+
+  image: { // the background image
+    //flex: 1,
+    justifyContent: 'center',
+    resizeMode: 'contain',
+  }
 });
