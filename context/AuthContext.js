@@ -10,6 +10,7 @@ export const AuthContextProvider = ({children}) => {
     const [userInfo, setUserInfo] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [splashLoading, setSplashLoading] = useState(false);
+    const [err, setErr] = useState(null);
     
     const login = (email, password) => {
         
@@ -23,6 +24,7 @@ export const AuthContextProvider = ({children}) => {
             })
             .then(res => {
                 let userInfo = res.data;
+                setErr(null);
                 setUserInfo(userInfo);
                 AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
                 setIsLoading(false);
@@ -30,8 +32,38 @@ export const AuthContextProvider = ({children}) => {
                 //console.log(userInfo.accessToken);
             }).catch(e => {// error handling to be changed here
                 console.log(`login error ${e}`);
+                console.log(e)
+                setErr(`login error ${e}`);
                 setIsLoading(false);
         });  
+    };
+
+    const mfaVerify = async (token) => {
+        let userInfo = await AsyncStorage.getItem('userInfo');
+        userInfo = JSON.parse(userInfo);
+        axios
+            .post(
+                `${BASE_URL}/api/auth/mfa`,                
+                {
+
+                    mfaToken: token,
+                    email: userInfo.email,
+                    withCredentials: true,
+                })
+            .then(res => {
+                let userInfo = res.data;
+                setErr(null);
+                setUserInfo(userInfo);
+                AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
+                setIsLoading(false);
+                //console.log(res);
+                //console.log(userInfo.accessToken);
+            }).catch(e => {// error handling to be changed here
+                console.log(`login error ${e}`);
+                console.log(e)
+                setErr(`login error ${e}`);
+                setIsLoading(false);
+        }); 
     };
 
     const logout = () => {
@@ -106,7 +138,9 @@ export const AuthContextProvider = ({children}) => {
                 userInfo,
                 splashLoading,
                 login,
-                logout
+                logout,
+                err,
+                mfaVerify
             }}>{children}
         </AuthContext.Provider>
     );

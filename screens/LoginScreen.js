@@ -9,7 +9,8 @@ import { AuthContext } from '../context/AuthContext';
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const {isLoading, login} = useContext(AuthContext);
+  const {isLoading, login, err} = useContext(AuthContext);  
+
   
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}> 
@@ -29,11 +30,15 @@ const LoginScreen = ({ navigation }) => {
               onChangeText={(text) => setPassword(text)}
               />
         </View>
+        <Text>{err}</Text>
         <Button containerStyle={styles.button1} type="outline" title="Forgot Password?" />
 
         <Button title="Login"
             onPress={() => {
-            login(email, password);
+              login(email, password);
+              if(err === null) {
+                navigation.navigate("Authenticator")
+              }
         }}
         containerStyle={styles.button2}
         />        

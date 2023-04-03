@@ -1,15 +1,29 @@
 import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput } from 'react-native'
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Button, Input, Image } from "react-native-elements";       
+import { AuthContext } from '../context/AuthContext';
 
 const AuthScreen = ({ navigation }) => {
+  const {isLoading, mfaVerify, err} = useContext(AuthContext);  
+  const [token, setToken] = useState(null);
+  
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
     <View style={styles.inputContainer}>
 
       <Text style = {styles.msg}>Please enter the code sent to the Microsoft Authenticator App</Text>
-      <TextInput style={styles.input}></TextInput>
-      <Button onPress={() => navigation.navigate("Home")} containerStyle={styles.button} title="Continue" />
+      <TextInput style={styles.input}
+        value={token}
+        onChangeText={(text) => setToken(text)}
+      ></TextInput>
+      <Text>{err}</Text>
+      <Button onPress={() => {
+              mfaVerify(token);
+              if(err === null) {
+                navigation.navigate("Authenticator")
+              }
+            }}
+            containerStyle={styles.button} title="Continue" />
 
     </View>
     </KeyboardAvoidingView>
