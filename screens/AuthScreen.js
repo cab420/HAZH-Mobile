@@ -4,22 +4,25 @@ import { Button, Input, Image } from "react-native-elements";
 import {ImageBackground} from 'react-native'; // for background image    
 
 const AuthScreen = ({ navigation }) => {
+  
+  const localImage = require('../assets/greyscaleQPSlogo.png'); // for background image
+
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
-    <View style={styles.inputContainer}>
+      <ImageBackground source={localImage} style={styles.image}>
 
-      <Text style = {styles.msg}>Please enter the code sent to the Microsoft Authenticator App</Text>
-      <TextInput style={styles.input}></TextInput>
-      <Button onPress={() => navigation.navigate("Home")} containerStyle={styles.button} title="Continue" />
+        <Text style = {styles.msg}>Please enter the code sent to the Microsoft Authenticator App</Text>
+        <TextInput style={styles.input}></TextInput>
+        <Button onPress={() => navigation.navigate("Home")} containerStyle={styles.button} title="Continue" />
 
-    </View>
+      </ImageBackground>
     </KeyboardAvoidingView>
   )
 }
 
 export default AuthScreen
 
-//style sheet for different things on login screen
+//style sheet for different things on auth screen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
     width: 300,
   },
   button: {
-    width: 300,
+    //width: 300,
     marginTop: 30,
   },
   logo: {
@@ -55,5 +58,7 @@ const styles = StyleSheet.create({
     //flex: 1,
     justifyContent: 'center',
     resizeMode: 'contain',
+    height: 300,
+    width: 250,
   }
 });
