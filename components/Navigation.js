@@ -3,6 +3,7 @@ import AuthScreen from "../screens/AuthScreen";
 import HomeScreen from "../screens/HomeScreen";
 import SplashScreen from "../screens/SplashScreen";
 import RecordHistoryScreen from "../screens/RecordHistory";
+import ShareToDesktopScreen from "../screens/ShareToDesktop";
 
 import React, {useContext} from "react";
 import { AuthContextProvider, AuthContext } from "../context/AuthContext";
@@ -29,27 +30,37 @@ return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={globalScreenOptions}>
             
-            <>
-                <Stack.Screen name="Home" 
-                component={HomeScreen} 
-                
-                />
-                <Stack.Screen
-                name="Login"
-                component={LoginScreen}
-                options={{headerShown: false}}
-                />
-                <Stack.Screen
-                name="Authenticator"
-                component={AuthScreen}
-                
-                />
-                <Stack.Screen
-                name="RecordHistory"
-                component={RecordHistoryScreen}
-                
-                />
-            </>
+            
+          <Stack.Screen name="Home" 
+          component={HomeScreen} 
+          options={{title: 'QPS Messaging Application'}}
+          />
+
+          <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{headerShown: false}}
+          />
+
+          <Stack.Screen
+          name="Authenticator"
+          component={AuthScreen}
+          options={{title: 'Authentication'}}
+          />
+          
+          <Stack.Screen
+          name="RecordHistory"
+          component={RecordHistoryScreen}
+          options={{title: 'Screen Record History'}}
+          />
+
+          <Stack.Screen
+          name="ShareToDesktop"
+          component={ShareToDesktopScreen}
+          options={{title: 'Start Screen Sharing'}}
+          />
+
+            
                       
         </Stack.Navigator>
       </NavigationContainer>    
