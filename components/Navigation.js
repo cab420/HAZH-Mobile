@@ -25,7 +25,7 @@ const globalScreenOptions = {
 
 const Navigation = () => {
     const { userInfo, splashLoading } = useContext(AuthContext);
-return (
+    return (
   <NavigationContainer>
   <Stack.Navigator screenOptions={globalScreenOptions}>
       {userInfo.accessToken ? (
