@@ -17,8 +17,7 @@ const RecordHistoryScreen = ({ navigation }) => {
         <Text></Text>
         <Text></Text>
 
-        <Button onPress={() => navigation.navigate("Home")} 
-          containerStyle={styles.button} title="Return Home" />
+        
         
 
       </ImageBackground>
@@ -27,6 +26,10 @@ const RecordHistoryScreen = ({ navigation }) => {
 }
 
 export default RecordHistoryScreen
+
+// <Button onPress={() => navigation.navigate("Home")} 
+// containerStyle={styles.button} title="Return Home" />
+
 
 //style sheet for different things on record history screen
 const styles = StyleSheet.create({

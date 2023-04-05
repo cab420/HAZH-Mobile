@@ -13,13 +13,12 @@ const ShareToDesktop = ({ navigation }) => {
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <ImageBackground source={localImage} style={styles.image}>
   
-  
-          <Text style = {styles.msg}>Screen Record History</Text>
+
+          <Text style = {styles.msg}>Would you like to connect to Manager?</Text>
           <Text></Text>
           <Text></Text>
   
-          <Button onPress={() => navigation.navigate("Home")} 
-            containerStyle={styles.button} title="Return Home" />
+          
           
   
         </ImageBackground>
@@ -28,6 +27,9 @@ const ShareToDesktop = ({ navigation }) => {
 }
 
 export default ShareToDesktop
+
+// <Button onPress={() => navigation.navigate("Home")} 
+// containerStyle={styles.button} title="Return Home" />
 
 //style sheet for different things on share to desktop screen
 const styles = StyleSheet.create({
