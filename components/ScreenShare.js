@@ -18,7 +18,7 @@ const [localStream, setlocalStream] = useState(null);
 const [remoteStream, setRemoteStream] = useState(null);
 
 // This establishes your WebSocket connection
-const socket = SocketIOClient('http://192.168.1.10:3500', {
+const socket = SocketIOClient(SOCKET_URL, {
     transports: ['websocket'],
     query: {
         callerId, 
