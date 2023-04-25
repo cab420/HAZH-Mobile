@@ -4,7 +4,7 @@ import { Button, Input, Image } from "react-native-elements";
 import {ImageBackground} from 'react-native'; // for background image
 
 
-const JoinScreen = ({ navigation }) => {
+const StreamingScreen = ({ navigation }) => {
   
   const localImage = require('../assets/greyscaleQPSlogo.png'); // for background image
 
@@ -32,7 +32,7 @@ const JoinScreen = ({ navigation }) => {
   )
 }
 
-export default JoinScreen
+export default StreamingScreen
 
 //style sheet for different things on record history screen
 const styles = StyleSheet.create({
