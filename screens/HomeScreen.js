@@ -20,7 +20,8 @@ const HomeScreen = ({ navigation }) => {
         
           <Button 
             onPress={() => { 
-              startRecording();             
+              //startRecording();
+              navigation.navigate("ShareScreen")             
             }}
             containerStyle={styles.button} title="Share to Desktop" 
           />
