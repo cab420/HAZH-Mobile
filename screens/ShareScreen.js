@@ -16,13 +16,13 @@ const JoinScreen = ({ navigation }) => {
         <Text style = {styles.msg}>SHARE TEST</Text>
         <Text></Text>
         <Text></Text>
-        
+
           <Button 
             onPress={() => {
               //navigation.navigate("RecordHistory")
               //startRecording();
             }}
-            containerStyle={styles.button} title= "Share to Desktop" 
+            containerStyle={styles.button} title= "Begin Share" 
           />
         <Button onPress={() => navigation.navigate("Home")} 
           containerStyle={styles.button} title="Return Home" />
