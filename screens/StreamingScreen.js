@@ -19,7 +19,7 @@ const StreamingScreen = ({ navigation }) => {
 
           <Button 
             onPress={() => {
-              //navigation.navigate("RecordHistory")
+              navigation.navigate("RecordHistory")
               //startRecording();
             }}
             containerStyle={styles.button} title= "Begin Share" 

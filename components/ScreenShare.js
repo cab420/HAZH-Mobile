@@ -1,3 +1,5 @@
+//RESOURCE FOR THIS STUFF https://dev.to/video-sdk/react-native-webrtc-lm9
+
 import SocketIOClient from 'socket.io-client'; // import socket io
 import { SOCKET_URL } from '../config/config';
 // import WebRTC 
