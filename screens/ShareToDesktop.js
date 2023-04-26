@@ -5,9 +5,12 @@ import { AuthContext } from '../context/AuthContext';
 import { startRecording } from '../components/ScreenShare';
 import {ImageBackground} from 'react-native'; // for background image
 
+
 const ShareToDesktop = ({ navigation }) => {
   
     const localImage = require('../assets/greyscaleQPSlogo.png'); // for background image
+
+    
   
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -17,6 +20,7 @@ const ShareToDesktop = ({ navigation }) => {
           <Text style = {styles.msg}>Would you like to connect to Manager?</Text>
           <Text></Text>
           <Text></Text>
+          <Video width = "700" height = "400" controls></Video>
   
           
           
